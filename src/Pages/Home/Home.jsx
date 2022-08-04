@@ -1,13 +1,11 @@
 import React from "react";
 import "./Home.css";
-import { Login } from "../pages";
 
 function Home() {
   return (
-    <>
-      <div className="canva-background-img"></div>
-      <Login />
-    </>
+    <div className="center-div">
+      <h1>I am Home 🤫</h1>
+    </div>
   );
 }
 
