@@ -58,6 +58,7 @@ const authSlice = createSlice({
       .addCase(userLogin.fulfilled, (state, action) => {
         state.user = action.payload.foundUser;
         state.token = action.payload.encodedToken;
+        console.log("Token", state.token);
         localStorage.setItem("canvalink.token", action.payload.encodedToken);
         localStorage.setItem(
           "canvalink.user",
