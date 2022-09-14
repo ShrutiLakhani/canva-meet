@@ -1,7 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import "./Sidebar.css";
+import { userLogout } from "../../redux/features/authSlice";
 function Sidebar({ active }) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    console.log("Hey You");
+    dispatch(userLogout());
+    navigate("/");
+  };
   return (
     <div className="sidebar-container">
       <div className="sidebar-left">
@@ -36,10 +45,9 @@ function Sidebar({ active }) {
           </Link>
         </div>
         <div>
-          <button className="sidebar-button">New Post</button>
-        </div>
-        <div>
-          <button className="sidebar-logout-button">Logout</button>
+          <button className="sidebar-logout-button" onClick={handleLogout}>
+            Logout
+          </button>
         </div>
       </div>
     </div>

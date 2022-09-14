@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createPost, getPosts } from "../../redux/features/post/postThunk";
 import {
@@ -11,27 +11,49 @@ import "./Home.css";
 import { useEffect } from "react";
 
 function Home() {
-  console.log("Home: Comes here");
+  const { username, following } = useSelector((state) => state.auth.user);
+  const { allPosts } = useSelector((state) => state.allPosts);
+  const [sortBy, setSortBy] = useState("Latest");
+  console.log("Home", username);
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.post.posts);
-  const reversePosts = [...posts].reverse();
-  console.log(reversePosts);
-  useEffect(() => {
-    dispatch(getPosts());
-  }, []);
+
+  const filteredPosts = posts.filter((post) => post.username === username);
+  console.log(posts.username);
+  console.log("FP", filteredPosts);
+
+  const sortHandler = () => {
+    switch (sortBy) {
+      case "Latest":
+        return [...filteredPosts].sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        );
+      case "Oldest":
+        return [...filteredPosts].sort(
+          (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+        );
+      case "Trending":
+        return [...filteredPosts].sort(
+          (a, b) => b.likes?.length - a.likes?.length
+        );
+      default:
+        return filteredPosts;
+    }
+  };
+
+  const posters = sortHandler(filteredPosts);
+  console.log("Posters", posters);
   return (
     <>
       <h1 className="page-header">I am Home 🤫</h1>
       <div className="center-div">
         <Sidebar />
-
         <div>
           <MainFeed />
-          {reversePosts.map((post) => (
+          {posters.map((post) => (
             <PostCard key={post.id} {...post} />
           ))}
         </div>
-        {/* <PostCard /> */}
         <RightSidebar />
       </div>
     </>

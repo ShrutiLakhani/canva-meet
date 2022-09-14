@@ -47,6 +47,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     userLogout: (state, action) => {
+      console.log("Aaya Kya");
       state.user = "";
       state.token = "";
       localStorage.removeItem("canvalink.user");

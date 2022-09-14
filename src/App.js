@@ -11,6 +11,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         {/* <Route path="/mock" element={<Mockman />} />  */}
         <Route path="/signup" element={<Signup />} />
+        <Route path="/explore" element={<Explore />} />
       </Routes>
     </div>
   );
