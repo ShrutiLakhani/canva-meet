@@ -5,11 +5,9 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createPost } from "../../redux/features/post/postThunk";
 function MainFeed() {
-  console.log("Comes here");
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({ content: "" });
   const handleSubmit = (data) => {
-    console.log("data");
     dispatch(createPost(data));
     setFormData({ content: "" });
   };
@@ -33,7 +31,6 @@ function MainFeed() {
           <InputOption />
         </div>
       </div>
-      {/* <PostCard /> */}
     </div>
   );
 }

@@ -16,8 +16,6 @@ const filterSlice = createSlice({
     },
   },
 });
-
-console.log("HEREEEEE");
 const filterActions = filterSlice.actions;
 export { filterActions };
 export default filterSlice.reducer;

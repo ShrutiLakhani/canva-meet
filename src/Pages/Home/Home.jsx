@@ -14,13 +14,11 @@ function Home() {
   const { username, following } = useSelector((state) => state.auth.user);
   const { allPosts } = useSelector((state) => state.allPosts);
   const [sortBy, setSortBy] = useState("Latest");
-  console.log("Home", username);
+
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.post.posts);
 
   const filteredPosts = posts.filter((post) => post.username === username);
-  console.log(posts.username);
-  console.log("FP", filteredPosts);
 
   const sortHandler = () => {
     switch (sortBy) {
@@ -42,7 +40,6 @@ function Home() {
   };
 
   const posters = sortHandler(filteredPosts);
-  console.log("Posters", posters);
   return (
     <>
       <h1 className="page-header">I am Home 🤫</h1>

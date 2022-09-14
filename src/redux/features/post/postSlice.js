@@ -29,11 +29,9 @@ const postSlice = createSlice({
         console.log("Error");
       })
       .addCase(createPost.fulfilled, (state, action) => {
-        console.log("Token-PostSlice", state.token);
         state.posts = action.payload.posts;
       })
       .addCase(createPost.rejected, (state, action) => {
-        console.log("Token-PostSlice", state.token);
         console.log(action);
       });
   },

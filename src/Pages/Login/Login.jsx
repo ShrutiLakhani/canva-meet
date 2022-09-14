@@ -18,7 +18,6 @@ function Login() {
   };
 
   const guestLogin = (e) => {
-    console.log("Comes here");
     e.preventDefault();
     dispatch(userLogin(testUser));
   };
@@ -31,7 +30,6 @@ function Login() {
       console.log("Ready for dispatch");
     }
   };
-  console.log("location.pathname", location.pathname);
   useEffect(() => {
     if (token && location.pathname === "/") {
       navigate("/home");

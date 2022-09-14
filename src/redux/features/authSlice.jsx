@@ -17,7 +17,6 @@ export const userLogin = createAsyncThunk(
         username: logindata.username,
         password: logindata.password,
       });
-      console.log(response);
       return response.data;
     } catch (error) {
       console.log(error.response.data);
@@ -34,7 +33,6 @@ export const userSignup = createAsyncThunk(
         password: signUpData.password,
       });
       return response.data;
-      //   navigate("/explore");
     } catch (error) {
       console.log(error.response.data);
       return rejectWithValue(error.response.data);
@@ -47,7 +45,6 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     userLogout: (state, action) => {
-      console.log("Aaya Kya");
       state.user = "";
       state.token = "";
       localStorage.removeItem("canvalink.user");
@@ -59,7 +56,6 @@ const authSlice = createSlice({
       .addCase(userLogin.fulfilled, (state, action) => {
         state.user = action.payload.foundUser;
         state.token = action.payload.encodedToken;
-        console.log("Token", state.token);
         localStorage.setItem("canvalink.token", action.payload.encodedToken);
         localStorage.setItem(
           "canvalink.user",
@@ -68,7 +64,6 @@ const authSlice = createSlice({
       })
       .addCase(userLogin.rejected, (state, action) => {})
       .addCase(userSignup.fulfilled, (state, action) => {
-        console.log("HELLO");
         state.user = action.payload.createdUser;
         state.token = action.payload.encodedToken;
         localStorage.setItem("canvalink.token", action.payload.encodedToken);
