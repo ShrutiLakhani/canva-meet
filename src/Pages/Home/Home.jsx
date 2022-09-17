@@ -45,7 +45,7 @@ function Home() {
       <h1 className="page-header">I am Home 🤫</h1>
       <div className="center-div">
         <Sidebar />
-        <div>
+        <div className="home-container">
           <MainFeed />
           {posters.map((post) => (
             <PostCard key={post.id} {...post} />

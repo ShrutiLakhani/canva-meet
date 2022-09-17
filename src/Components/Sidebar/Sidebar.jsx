@@ -28,7 +28,7 @@ function Sidebar({ active }) {
         </div>
         <div className="sidebar-links">
           <span class="material-symbols-outlined">bookmarks</span>
-          <Link to="/history" className="sidebar-links-name">
+          <Link to="/bookmark" className="sidebar-links-name">
             Bookmark
           </Link>
         </div>

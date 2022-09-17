@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./PostCard.css";
+import { addToBookmarks } from "../../redux/features/BookMark/BookMarkThunk";
 
 function PostCard(props) {
   const navigate = useNavigate();
@@ -15,6 +16,10 @@ function PostCard(props) {
     // likes: { likeCount, likedBy },
   } = props;
 
+  const handleAddToBookMark = (id) => {
+    console.log("Comes");
+    dispatch(addToBookmarks(id));
+  };
   return (
     <div className="post">
       <div className="post-header">
@@ -34,6 +39,12 @@ function PostCard(props) {
           chat_bubble
         </span>
         <span className="post-span-name">Comment</span>
+        <span
+          class="material-symbols-outlined"
+          onClick={() => handleAddToBookMark(_id)}
+        >
+          bookmark
+        </span>
       </div>
     </div>
   );
