@@ -13,7 +13,6 @@ function Explore() {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.post.posts);
   const reversePosts = [...posts].reverse();
-  console.log(reversePosts);
   useEffect(() => {
     dispatch(getPosts());
   }, []);

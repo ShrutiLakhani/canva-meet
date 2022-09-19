@@ -7,7 +7,6 @@ const initialState = {
   posts: [],
   loading: false,
   userPost: [],
-  bookMarks: [],
   singlePost: "",
   comments: [],
 };

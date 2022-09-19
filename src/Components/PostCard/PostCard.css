@@ -1,5 +1,5 @@
 .post {
-  background-color: wheat;
+  background-color: var(--primary-color);
   padding: 15px;
   margin-bottom: 10px;
   border-radius: 10px;
@@ -30,10 +30,16 @@
 .post-span-icon {
   color: #70b5f9;
 }
+.bookmark {
+  margin-left: 29.5rem;
+}
 .post-buttons {
   display: flex;
   justify-content: flex-start;
   gap: 6px;
   margin-top: 8px;
   margin-left: 20px;
+}
+.post-delete-icon {
+  margin-left: 32.5rem;
 }

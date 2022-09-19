@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./PostCard.css";
-import { addToBookmarks } from "../../redux/features/BookMark/BookMarkThunk";
+import { addToBookmarks } from "../../redux/features/BookMark/bookmarkThunk";
 
 function PostCard(props) {
   const navigate = useNavigate();
@@ -17,7 +17,6 @@ function PostCard(props) {
   } = props;
 
   const handleAddToBookMark = (id) => {
-    console.log("Comes");
     dispatch(addToBookmarks(id));
   };
   return (
@@ -26,8 +25,9 @@ function PostCard(props) {
         <span class="material-symbols-outlined">account_circle</span>
         <div className="post-info">
           <h2>{username}</h2>
-          <p>{content}</p>
+          <p>@{username}</p>
         </div>
+        <span class="material-symbols-outlined post-delete-icon">delete</span>
       </div>
       <div className="post-body">
         <p>{content}</p>
@@ -40,7 +40,7 @@ function PostCard(props) {
         </span>
         <span className="post-span-name">Comment</span>
         <span
-          class="material-symbols-outlined"
+          class="material-symbols-outlined post-span-icon bookmark"
           onClick={() => handleAddToBookMark(_id)}
         >
           bookmark

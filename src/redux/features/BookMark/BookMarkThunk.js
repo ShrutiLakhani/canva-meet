@@ -1,5 +1,5 @@
 import axios from "axios";
-import { bookmarkActions } from "./bookMarkSlice";
+import { bookmarkActions } from "./bookmarkSlice";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const addToBookmarks = createAsyncThunk(
@@ -13,7 +13,6 @@ export const addToBookmarks = createAsyncThunk(
           headers: { authorization: getState().auth.token },
         }
       );
-
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);

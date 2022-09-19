@@ -1,19 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { addToBookmarks } from "./bookmarkThunk";
 
 const initialState = {
-  bookMarkPosts: [],
+  bookmarks: [],
 };
 
 const bookMarkSlice = createSlice({
   name: "bookmark",
   initialState,
-  reducers: {
-    setBookMarkData: (state, action) => {
-      state.bookMarkPosts = action.payload;
-    },
+  extraReducers: (builder) => {
+    builder.addCase(addToBookmarks.fulfilled, (state, action) => {
+      state.bookmarks = action.payload.bookmarks;
+    });
   },
 });
 
-const bookmarkActions = bookMarkSlice.actions;
-export { bookmarkActions };
-export default bookMarkSlice;
+export default bookMarkSlice.reducer;
