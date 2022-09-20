@@ -1,7 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-import { createPost, getPosts } from "./postThunk";
+import {
+  createPost,
+  getPosts,
+  deletePost,
+  likePost,
+  dislikePost,
+} from "./postThunk";
 
 const initialState = {
   posts: [],
@@ -32,6 +38,24 @@ const postSlice = createSlice({
       })
       .addCase(createPost.rejected, (state, action) => {
         console.log(action);
+      })
+      .addCase(deletePost.fulfilled, (state, action) => {
+        state.posts = action.payload.posts;
+      })
+      .addCase(deletePost.rejected, (state, action) => {
+        console.log("error", action);
+      })
+      .addCase(likePost.fulfilled, (state, action) => {
+        state.posts = action.payload.posts;
+      })
+      .addCase(likePost.rejected, (state, action) => {
+        console.log("error");
+      })
+      .addCase(dislikePost.fulfilled, (state, action) => {
+        state.posts = action.payload.posts;
+      })
+      .addCase(dislikePost.rejected, (state, action) => {
+        console.log("error");
       });
   },
 });

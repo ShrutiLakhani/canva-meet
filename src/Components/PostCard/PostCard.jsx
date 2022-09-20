@@ -3,6 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./PostCard.css";
 import { addToBookmarks } from "../../redux/features/BookMark/bookmarkThunk";
+import {
+  deletePost,
+  likePost,
+  dislikePost,
+} from "../../redux/features/post/postThunk";
 
 function PostCard(props) {
   const navigate = useNavigate();
@@ -13,11 +18,20 @@ function PostCard(props) {
     _id,
     content,
     username,
-    // likes: { likeCount, likedBy },
+    likes: { likeCount, likedBy },
   } = props;
 
   const handleAddToBookMark = (id) => {
     dispatch(addToBookmarks(id));
+  };
+  const handleDeletePost = (id) => {
+    dispatch(deletePost(id));
+  };
+  const handleLikePost = (id) => {
+    dispatch(likePost(id));
+  };
+  const handleDislikePost = (id) => {
+    dispatch(dislikePost(id));
   };
   return (
     <div className="post">
@@ -27,14 +41,35 @@ function PostCard(props) {
           <h2>{username}</h2>
           <p>@{username}</p>
         </div>
-        <span class="material-symbols-outlined post-delete-icon">delete</span>
+        <span
+          class="material-symbols-outlined post-delete-icon"
+          onClick={() => handleDeletePost(_id)}
+        >
+          delete
+        </span>
       </div>
       <div className="post-body">
         <p>{content}</p>
       </div>
       <div className="post-buttons">
-        <span class="material-symbols-outlined post-span-icon">favorite</span>
-        <span className="post-span-name">Like</span>
+        <div className="like-flex">
+          {likedBy.some((user) => user.username === currentUser) ? (
+            <span
+              className="material-symbols-outlined post-span-icon"
+              onClick={() => handleDislikePost(_id)}
+            >
+              favorite
+            </span>
+          ) : (
+            <span
+              className="material-symbols-outlined post-span-icon"
+              onClick={() => handleLikePost(_id)}
+            >
+              favorite
+            </span>
+          )}
+          <span>{likeCount}</span>
+        </div>
         <span class="material-symbols-outlined post-span-icon">
           chat_bubble
         </span>

@@ -33,3 +33,62 @@ export const createPost = createAsyncThunk(
     }
   }
 );
+export const deletePost = createAsyncThunk(
+  "api/deletePost",
+  async (postId, thunkAPI) => {
+    const encodedToken = thunkAPI.getState().auth.token;
+
+    try {
+      const response = await axios.delete(
+        `/api/posts/${postId}`,
+
+        {
+          headers: { authorization: encodedToken },
+        }
+      );
+
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const likePost = createAsyncThunk(
+  "post/like",
+  async (postId, thunkAPI) => {
+    const encodedToken = thunkAPI.getState().auth.token;
+
+    try {
+      const response = await axios.post(
+        `/api/posts/like/${postId}`,
+        {},
+        {
+          headers: { authorization: encodedToken },
+        }
+      );
+
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+export const dislikePost = createAsyncThunk(
+  "post/dislike",
+  async (postId, { rejectWithValue, getState }) => {
+    try {
+      const response = await axios.post(
+        `/api/posts/dislike/${postId}`,
+        {},
+        {
+          headers: { authorization: getState().auth.token },
+        }
+      );
+
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);

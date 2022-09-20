@@ -43,3 +43,8 @@
 .post-delete-icon {
   margin-left: 32.5rem;
 }
+.like-flex {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
