@@ -52,7 +52,7 @@ function PostCard(props) {
         <p>{content}</p>
       </div>
       <div className="post-buttons">
-        <div className="like-flex">
+        <div className="like-container">
           {likedBy.some((user) => user.username === currentUser) ? (
             <span
               className="material-symbols-outlined post-span-icon"
