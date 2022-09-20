@@ -1,0 +1,14 @@
+.inputOption {
+  display: flex;
+  justify-content: flex-start;
+  gap: 4px;
+  margin-top: 8px;
+  margin-left: 20px;
+}
+.span-name {
+  vertical-align: middle;
+  margin-top: 5px;
+}
+.span-icon {
+  color: #70b5f9;
+}

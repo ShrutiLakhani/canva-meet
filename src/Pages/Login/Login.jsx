@@ -13,12 +13,11 @@ function Login() {
   const { token } = useSelector((state) => state.auth);
   const [loginData, setLoginData] = useState({ username: "", password: "" });
   const testUser = {
-    username: "batmanmarvel@gmail.com",
-    password: "batmanmarvel",
+    username: "curves&style",
+    password: "fashion",
   };
 
   const guestLogin = (e) => {
-    console.log("Comes here");
     e.preventDefault();
     dispatch(userLogin(testUser));
   };
@@ -31,7 +30,6 @@ function Login() {
       console.log("Ready for dispatch");
     }
   };
-  console.log("location.pathname", location.pathname);
   useEffect(() => {
     if (token && location.pathname === "/") {
       navigate("/home");

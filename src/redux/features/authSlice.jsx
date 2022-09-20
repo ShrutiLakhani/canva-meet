@@ -17,7 +17,6 @@ export const userLogin = createAsyncThunk(
         username: logindata.username,
         password: logindata.password,
       });
-      console.log(response);
       return response.data;
     } catch (error) {
       console.log(error.response.data);
@@ -34,7 +33,6 @@ export const userSignup = createAsyncThunk(
         password: signUpData.password,
       });
       return response.data;
-      //   navigate("/explore");
     } catch (error) {
       console.log(error.response.data);
       return rejectWithValue(error.response.data);
@@ -66,7 +64,6 @@ const authSlice = createSlice({
       })
       .addCase(userLogin.rejected, (state, action) => {})
       .addCase(userSignup.fulfilled, (state, action) => {
-        console.log("HELLO");
         state.user = action.payload.createdUser;
         state.token = action.payload.encodedToken;
         localStorage.setItem("canvalink.token", action.payload.encodedToken);
