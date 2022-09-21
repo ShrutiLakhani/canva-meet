@@ -7,7 +7,6 @@ function Sidebar({ active }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleLogout = () => {
-    console.log("Hey You");
     dispatch(userLogout());
     navigate("/");
   };

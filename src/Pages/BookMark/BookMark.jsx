@@ -9,11 +9,10 @@ import {
 
 function BookMark() {
   const posts = useSelector((state) => state.post.posts);
-  const bookMarkedIds = useSelector((state) => state.bookmark.bookmarks);
+  const bookMarkedIds = useSelector((state) => state.post.bookmarks);
   const bookmarks = posts.filter((val) =>
     bookMarkedIds.map((n) => n.id).includes(val.id)
   );
-
   return (
     <>
       <h1 className="page-header">I am Home 🤫</h1>

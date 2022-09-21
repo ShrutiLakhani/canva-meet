@@ -86,6 +86,7 @@ export const createPostHandler = function (schema, request) {
         likedBy: [],
         dislikedBy: [],
       },
+      comments: [],
       username: user.username,
       createdAt: formatDate(),
       updatedAt: formatDate(),
@@ -134,7 +135,7 @@ export const editPostHandler = function (schema, request) {
         }
       );
     }
-    post = { ...post, ...postData };
+    post = { ...post, content: postData };
     this.db.posts.update({ _id: postId }, post);
     return new Response(201, {}, { posts: this.db.posts });
   } catch (error) {
@@ -180,7 +181,7 @@ export const likePostHandler = function (schema, request) {
       (currUser) => currUser._id !== user._id
     );
     post.likes.likeCount += 1;
-    post.likes.likedBy.push(user);
+    post.likes.likedBy.push({ _id: user._id, username: user.username });
     this.db.posts.update({ _id: postId }, { ...post, updatedAt: formatDate() });
     return new Response(201, {}, { posts: this.db.posts });
   } catch (error) {
@@ -233,7 +234,7 @@ export const dislikePostHandler = function (schema, request) {
     const updatedLikedBy = post.likes.likedBy.filter(
       (currUser) => currUser._id !== user._id
     );
-    post.likes.dislikedBy.push(user);
+    post.likes.dislikedBy.push({ _id: user._id, username: user.username });
     post = { ...post, likes: { ...post.likes, likedBy: updatedLikedBy } };
     this.db.posts.update({ _id: postId }, { ...post, updatedAt: formatDate() });
     return new Response(201, {}, { posts: this.db.posts });
@@ -252,6 +253,46 @@ export const dislikePostHandler = function (schema, request) {
  * This handler handles deleting a post in the db.
  * send DELETE Request at /api/user/posts/:postId
  * */
+// export const deletePostHandler = function (schema, request) {
+//   const user = requiresAuth.call(this, request);
+//   try {
+//     if (!user) {
+//       return new Response(
+//         404,
+//         {},
+//         {
+//           errors: [
+//             "The username you entered is not Registered. Not Found error",
+//           ],
+//         }
+//       );
+//     }
+//     const postId = request.params.postId;
+//     console.log(postId);
+//     let post = schema.posts.findBy({ _id: postId }).attrs;
+//     if (post.username !== user.username) {
+//       return new Response(
+//         400,
+//         {},
+//         {
+//           errors: [
+//             "Cannot delete a Post doesn't belong to the logged in User.",
+//           ],
+//         }
+//       );
+//     }
+//     this.db.posts.remove({ _id: postId });
+//     return new Response(201, {}, { posts: this.db.posts });
+//   } catch (error) {
+//     return new Response(
+//       500,
+//       {},
+//       {
+//         error,
+//       }
+//     );
+//   }
+// };
 export const deletePostHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
   try {
