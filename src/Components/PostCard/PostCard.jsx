@@ -2,11 +2,11 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./PostCard.css";
-import { addToBookmarks } from "../../redux/features/BookMark/bookmarkThunk";
 import {
   deletePost,
   likePost,
   dislikePost,
+  addToBookmarks,
 } from "../../redux/features/post/postThunk";
 
 function PostCard(props) {

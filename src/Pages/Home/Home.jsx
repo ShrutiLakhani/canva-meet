@@ -12,7 +12,6 @@ import { useEffect } from "react";
 
 function Home() {
   const { username, following } = useSelector((state) => state.auth.user);
-  const { allPosts } = useSelector((state) => state.allPosts);
   const [sortBy, setSortBy] = useState("Latest");
 
   const dispatch = useDispatch();
