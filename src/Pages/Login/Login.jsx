@@ -13,7 +13,7 @@ function Login() {
   const { token } = useSelector((state) => state.auth);
   const [loginData, setLoginData] = useState({ username: "", password: "" });
   const testUser = {
-    username: "curves&style",
+    username: "Curves&Style",
     password: "fashion",
   };
 

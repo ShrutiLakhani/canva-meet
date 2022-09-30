@@ -110,3 +110,54 @@ export const addToBookmarks = createAsyncThunk(
     }
   }
 );
+export const removeFromBookmarks = createAsyncThunk(
+  "post/removeFromBookmarks",
+  async (postId, { rejectWithValue, getState }) => {
+    try {
+      const response = await axios.post(
+        `/api/users/remove-bookmark/${postId}`,
+        {},
+        {
+          headers: { authorization: getState().auth.token },
+        }
+      );
+
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+export const addComment = createAsyncThunk(
+  "post/addComment",
+  async (data, { rejectWithValue, getState }) => {
+    const commentData = data.comment;
+    console.log("commentData", commentData);
+    try {
+      const response = await axios.post(
+        `/api/comments/add/${data.postId}`,
+        { commentData },
+        {
+          headers: { authorization: getState().auth.token },
+        }
+      );
+      console.log("response.data", response.data);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const getComments = createAsyncThunk(
+  "post/getComments",
+  async (postId, { rejectWithValue, getState }) => {
+    try {
+      const response = await axios.get(`/api/comments/${postId}`);
+
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);

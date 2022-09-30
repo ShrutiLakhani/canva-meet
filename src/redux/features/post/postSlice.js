@@ -8,6 +8,9 @@ import {
   likePost,
   dislikePost,
   addToBookmarks,
+  removeFromBookmarks,
+  addComment,
+  getComments,
 } from "./postThunk";
 
 const initialState = {
@@ -63,6 +66,25 @@ const postSlice = createSlice({
         state.bookmarks = action.payload.bookmarks;
       })
       .addCase(addToBookmarks.rejected, (state, action) => {
+        console.log("error");
+      })
+      .addCase(removeFromBookmarks.fulfilled, (state, action) => {
+        state.bookmarks = action.payload.bookmarks;
+      })
+      .addCase(removeFromBookmarks.rejected, (state, action) => {
+        console.log("error");
+      })
+      .addCase(addComment.fulfilled, (state, action) => {
+        state.comments = action.payload.comments;
+        console.log("state.comments", state.comments);
+      })
+      .addCase(addComment.rejected, (state, action) => {
+        console.log("error");
+      })
+      .addCase(getComments.fulfilled, (state, action) => {
+        state.comments = action.payload.comments;
+      })
+      .addCase(getComments.rejected, (state, action) => {
         console.log("error");
       });
   },
