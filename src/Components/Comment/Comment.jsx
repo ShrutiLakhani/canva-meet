@@ -11,7 +11,7 @@ import "./Comment.css";
 //   upvoteComment,
 // } from "../../redux/features/post/postThunk";
 
-function Comment({ comment }) {
+function Comment({ post, comment }) {
   //   const { username, text, _id, votes } = props;
   const {
     username,
@@ -21,6 +21,8 @@ function Comment({ comment }) {
     text,
     _id: commentId,
   } = comment;
+  console.log("post", post);
+  console.log("comment", comment);
   const dispatch = useDispatch();
   const { postId } = useParams();
   //   const [postData, setPostData] = useState({ postId: postId, commentId: _id });
@@ -31,7 +33,7 @@ function Comment({ comment }) {
   //   const { posts, bookmarks, comments } = useSelector((state) => state.post);
   const posts = useSelector((state) => state.post.posts);
   const commentArr = useSelector((state) => state.post.comments);
-  const reverseCommentArr = [...commentArr].reverse();
+  const reverseCommentArr = [commentArr].reverse();
   console.log("commentArr", commentArr);
   //   console.log("comment", comment);
   //   const {
@@ -55,6 +57,7 @@ function Comment({ comment }) {
       </div>
 
       <p>{username}</p>
+      <p>{}</p>
 
       <span
         class="material-symbols-outlined post-delete-icon"

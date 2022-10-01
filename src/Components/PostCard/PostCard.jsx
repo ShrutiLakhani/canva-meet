@@ -33,9 +33,11 @@ function PostCard(props) {
     comments: {},
   } = props;
   const [formData, setFormData] = useState({ comment: "", postId: _id });
-  // useEffect(() => {
-  //   dispatch(getComments(postId));
-  // }, []);
+  const handleCommentPost = (formData) => {
+    console.log("formData", formData);
+    dispatch(addComment(formData));
+    setFormData({ ...formData, comment: "" });
+  };
 
   const handleAddToBookMark = (id) => {
     dispatch(addToBookmarks(id));
@@ -52,14 +54,9 @@ function PostCard(props) {
   const handleDislikePost = (id) => {
     dispatch(dislikePost(id));
   };
-  const handleCommentPost = (formData) => {
-    console.log("Comes");
-    console.log("formData", formData);
-    console.log("comment", comment);
-    dispatch(addComment(formData));
-    setFormData({ ...formData, comment: "" });
-  };
-  // console.log("comments", comments);
+
+  console.log("comment", comment);
+
   return (
     <>
       <div className="post">
@@ -139,9 +136,7 @@ function PostCard(props) {
             />
             <button
               className="absolute right-4 bottom-1/2 translate-y-1/2 rounded-md border-none bg-blue-500 px-3 py-1 text-sm text-gray-100"
-              onClick={() => {
-                handleCommentPost(formData);
-              }}
+              onClick={() => handleCommentPost(formData)}
             >
               Post
             </button>
