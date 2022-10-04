@@ -24,7 +24,6 @@ export const follow = createAsyncThunk(
         {},
         { headers: { authorization: encodedToken } }
       );
-      console.log("response", response);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);

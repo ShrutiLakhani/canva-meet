@@ -132,7 +132,6 @@ export const addComment = createAsyncThunk(
   "post/addComment",
   async (data, { rejectWithValue, getState }) => {
     const commentData = data.comment;
-    console.log("commentData", commentData);
     try {
       const response = await axios.post(
         `/api/comments/add/${data.postId}`,
@@ -141,7 +140,6 @@ export const addComment = createAsyncThunk(
           headers: { authorization: getState().auth.token },
         }
       );
-      console.log("response.data", response.data);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);

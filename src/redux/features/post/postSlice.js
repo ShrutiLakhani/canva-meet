@@ -76,7 +76,6 @@ const postSlice = createSlice({
       })
       .addCase(addComment.fulfilled, (state, action) => {
         state.comments = action.payload.comments;
-        console.log("state.comments", state.comments);
       })
       .addCase(addComment.rejected, (state, action) => {
         console.log("error");

@@ -308,7 +308,7 @@ export const posts = [
         _id: uuid(),
         username: "Christian Dior",
         profileImage: `https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Anna_Wintour_2019_crop.jpg/640px-Anna_Wintour_2019_crop.jpg`,
-        text: "You said it!",
+        text: "Yo man Yo!",
         createdAt: new Date("September 12 2022 12:18:35"),
         votes: {
           upvotedBy: [],

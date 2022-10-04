@@ -15,9 +15,7 @@ import {
 
 function PostCard(props) {
   const { postId } = useParams();
-
   const commentsArr = useSelector((state) => state.post.comments);
-  // console.log("commentsArr", commentsArr);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { username: currentUser } = useSelector((state) => state.auth.user);
@@ -29,14 +27,15 @@ function PostCard(props) {
     _id,
     content,
     username,
+    text,
     likes: { likeCount, likedBy },
     comments: {},
   } = props;
   const [formData, setFormData] = useState({ comment: "", postId: _id });
+  console.log("formData", formData);
   const handleCommentPost = (formData) => {
-    console.log("formData", formData);
     dispatch(addComment(formData));
-    setFormData({ ...formData, comment: "" });
+    setFormData({ comment: "" });
   };
 
   const handleAddToBookMark = (id) => {
@@ -54,8 +53,6 @@ function PostCard(props) {
   const handleDislikePost = (id) => {
     dispatch(dislikePost(id));
   };
-
-  console.log("comment", comment);
 
   return (
     <>
@@ -105,7 +102,6 @@ function PostCard(props) {
           >
             chat_bubble
           </span>
-          {/* <span className="post-span-name">Comment</span> */}
           {bookmarks.some((post) => post._id === _id) ? (
             <span
               class="material-symbols-outlined post-span-icon bookmark"
@@ -144,7 +140,6 @@ function PostCard(props) {
           {comments.map((comment) => (
             <Comment comment={comment} post={posts} key={comment} />
           ))}
-          {/* <Comment /> */}
         </footer>
       )}
     </>

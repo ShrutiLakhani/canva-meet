@@ -4,12 +4,10 @@ import { Link } from "react-router-dom";
 // import { useVideo, useAuth } from "../../context/context";
 import { useNavigate } from "react-router-dom";
 function Navbar() {
-  //   const { videoDispatch } = useVideo();
   const { loggedIn, setLoggedIn } = useState(false);
   const navigate = useNavigate();
 
   const logoutHandler = () => {
-    // localStorage.removeItem("userToken");
     setLoggedIn(false);
     navigate("/Login");
   };
