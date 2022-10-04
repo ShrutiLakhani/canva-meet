@@ -14,12 +14,9 @@ import { useEffect } from "react";
 function Home() {
   const { username, following } = useSelector((state) => state.auth.user);
   const followingUserArr = [...following].map((user) => user.username);
-
   const [sortBy, setSortBy] = useState("Latest");
-
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.post.posts);
-
   const filteredPosts = posts.filter((post) => post.username === username);
 
   const sortHandler = () => {
