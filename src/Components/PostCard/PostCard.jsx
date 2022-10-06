@@ -22,6 +22,9 @@ function PostCard(props) {
   const { posts, bookmarks, comments } = useSelector((state) => state.post);
   const [enableComments, setEnableComments] = useState(false);
   const [comment, setComment] = useState("");
+  const commentArr = useSelector((state) => state.post.comments);
+
+  // const posts = useSelector((state) => state.post.posts);
 
   const {
     _id,
@@ -32,10 +35,9 @@ function PostCard(props) {
     comments: {},
   } = props;
   const [formData, setFormData] = useState({ comment: "", postId: _id });
-  console.log("formData", formData);
   const handleCommentPost = (formData) => {
     dispatch(addComment(formData));
-    setFormData({ comment: "" });
+    setFormData({ ...formData, comment: "" });
   };
 
   const handleAddToBookMark = (id) => {
@@ -53,7 +55,7 @@ function PostCard(props) {
   const handleDislikePost = (id) => {
     dispatch(dislikePost(id));
   };
-
+  console.log("commentArr", commentArr);
   return (
     <>
       <div className="post">
@@ -137,8 +139,8 @@ function PostCard(props) {
               Post
             </button>
           </div>
-          {comments.map((comment) => (
-            <Comment comment={comment} post={posts} key={comment} />
+          {commentArr.map((comment) => (
+            <Comment comment={comment} postId={_id} key={comment} />
           ))}
         </footer>
       )}

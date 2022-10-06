@@ -140,8 +140,10 @@ export const addComment = createAsyncThunk(
           headers: { authorization: getState().auth.token },
         }
       );
+      console.log("response.data", response.data);
       return response.data;
     } catch (error) {
+      console.log("error", error.response.data);
       return rejectWithValue(error.response.data);
     }
   }

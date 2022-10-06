@@ -88,7 +88,7 @@ export const posts = [
       ],
       dislikedBy: [],
     },
-    username: "Coco Chanel",
+    username: "Karl Lagerfeld",
     profileImage: `https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Anna_Wintour_2019_crop.jpg/640px-Anna_Wintour_2019_crop.jpg`,
     createdAt: new Date("September 19 2022 12:06:56"),
     updatedAt: formatDate(),
