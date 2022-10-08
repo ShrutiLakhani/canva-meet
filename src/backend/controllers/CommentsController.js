@@ -171,7 +171,6 @@ export const deletePostCommentHandler = function (schema, request) {
     );
   }
 };
-
 /**
  * This handler handles upvoting a comment of a post in the db.
  * send POST Request at /api/comments/upvote/:postId/:commentId

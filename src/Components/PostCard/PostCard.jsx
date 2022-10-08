@@ -15,14 +15,14 @@ import {
 
 function PostCard(props) {
   const { postId } = useParams();
-  const commentsArr = useSelector((state) => state.post.comments);
+  // var commentsArr = useSelector((state) => state.post.comments);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { username: currentUser } = useSelector((state) => state.auth.user);
   const { posts, bookmarks, comments } = useSelector((state) => state.post);
   const [enableComments, setEnableComments] = useState(false);
   const [comment, setComment] = useState("");
-  const commentArr = useSelector((state) => state.post.comments);
+  var commentArr = useSelector((state) => state.post.comments);
 
   // const posts = useSelector((state) => state.post.posts);
 
@@ -32,7 +32,7 @@ function PostCard(props) {
     username,
     text,
     likes: { likeCount, likedBy },
-    comments: {},
+    comments: [],
   } = props;
   const [formData, setFormData] = useState({ comment: "", postId: _id });
   const handleCommentPost = (formData) => {
@@ -55,6 +55,13 @@ function PostCard(props) {
   const handleDislikePost = (id) => {
     dispatch(dislikePost(id));
   };
+  const handleNavigateToSinglePost = (id) => {
+    navigate(`/post/${id}`);
+  };
+
+  useEffect(() => {
+    dispatch(getComments(postId));
+  }, []);
   console.log("commentArr", commentArr);
   return (
     <>
@@ -100,7 +107,7 @@ function PostCard(props) {
           </div>
           <span
             class="material-symbols-outlined post-span-icon"
-            onClick={() => setEnableComments((prev) => !prev)}
+            onClick={() => handleNavigateToSinglePost(_id)}
           >
             chat_bubble
           </span>
@@ -121,7 +128,14 @@ function PostCard(props) {
           )}
         </div>
       </div>
-      {enableComments && (
+    </>
+  );
+}
+
+export { PostCard };
+
+{
+  /* {enableComments && (
         <footer>
           <div className="relative w-full px-1">
             <textarea
@@ -145,7 +159,5 @@ function PostCard(props) {
         </footer>
       )}
     </>
-  );
+  ); */
 }
-
-export { PostCard };
