@@ -13,6 +13,9 @@ import { Route, Routes } from "react-router-dom";
 function App() {
   return (
     <div className="App">
+      <div>
+        <Navbar />
+      </div>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />

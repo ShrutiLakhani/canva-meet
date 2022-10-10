@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-// import { useVideo, useAuth } from "../../context/context";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 function Navbar() {
   const { loggedIn, setLoggedIn } = useState(false);
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ function Navbar() {
     setLoggedIn(false);
     navigate("/Login");
   };
-
+  const { username, following } = useSelector((state) => state.auth.user);
   return (
     <>
       <div className="canva-navbar">
@@ -21,10 +21,9 @@ function Navbar() {
         </div>
         <div className="navbar-links">
           <span class="material-symbols-outlined">account_circle</span>
-          <span class="material-symbols-outlined" onClick={logoutHandler}>
-            logout
-          </span>
+          <p>{username}</p>
         </div>
+        {/* </div> */}
       </div>
     </>
   );

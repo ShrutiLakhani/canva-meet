@@ -1,26 +1,19 @@
 .feed {
   margin: 0 30px;
-  /* width: 100%;
-  flex: 0.6; */
 }
 .feed-inputcontainer {
   background-color: white;
   padding: 10px;
   padding-bottom: 20px;
   border-radius: 10px;
-  /* margin-bottom: 20px; */
   margin-left: 36px;
   margin-right: 80px;
 }
 .comment-input {
-  /* border: 1px solid black; */
   border-radius: 30px;
-  /* display: flex; */
-  /* flex-direction: column; */
   padding: 10px;
   color: lightgrey;
   padding-left: 15px;
-  /* align-items: center; */
 }
 
 .feed-input > input {
@@ -42,9 +35,6 @@
 .user-info {
   display: flex;
 }
-.user-info > span {
-  margin-left: auto;
-}
 .container {
   border: 1px solid black;
   width: 81%;
@@ -59,7 +49,11 @@
   color: var(--component-black-color);
   font-weight: 300;
 }
-.post-delete-icon {
-  margin-left: 32.5rem;
+.user-info .post-delete-icon {
+  margin-left: auto;
   color: black;
+}
+.user-info .post-edit-icon {
+  color: black;
+  margin-left: 29rem;
 }

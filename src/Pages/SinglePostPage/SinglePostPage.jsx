@@ -20,7 +20,6 @@ function SinglePostPage() {
   const reverseCommentArr = [...commentsArr].reverse();
   const { postId } = useParams();
   const singlePost = posts.find((post) => post._id === postId);
-  //   const { editCommentModal } = useSelector((state) => state.modal);
   useEffect(() => {
     dispatch(getComments(postId));
   }, []);

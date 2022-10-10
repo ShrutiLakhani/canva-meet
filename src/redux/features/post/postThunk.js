@@ -28,7 +28,6 @@ export const createPost = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
-      console.log(error.response.data);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }
@@ -142,7 +141,6 @@ export const addComment = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
-      console.log("error", error.response.data);
       return rejectWithValue(error.response.data);
     }
   }
@@ -153,43 +151,6 @@ export const getComments = createAsyncThunk(
   async (postId, { rejectWithValue, getState }) => {
     try {
       const response = await axios.get(`/api/comments/${postId}`);
-
-      return response.data;
-    } catch (error) {
-      return rejectWithValue(error.response.data);
-    }
-  }
-);
-export const upvoteComment = createAsyncThunk(
-  "post/upvoteComment",
-  async (data, { rejectWithValue, getState }) => {
-    try {
-      const response = await axios.post(
-        `/api/comments/upvote/${data.postId}/${data.commentId}`,
-        {},
-        {
-          headers: { authorization: getState().auth.token },
-        }
-      );
-
-      return response.data;
-    } catch (error) {
-      return rejectWithValue(error.response.data);
-    }
-  }
-);
-
-export const downvoteComment = createAsyncThunk(
-  "post/downvoteComment",
-  async (data, { rejectWithValue, getState }) => {
-    try {
-      const response = await axios.post(
-        `/api/comments/downvote/${data.postId}/${data.commentId}`,
-        {},
-        {
-          headers: { authorization: getState().auth.token },
-        }
-      );
 
       return response.data;
     } catch (error) {
@@ -228,7 +189,7 @@ export const deleteComment = createAsyncThunk(
           headers: { authorization: getState().auth.token },
         }
       );
-      console.log("response.data", response.data);
+
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);

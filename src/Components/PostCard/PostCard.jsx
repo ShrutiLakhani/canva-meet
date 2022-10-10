@@ -15,7 +15,6 @@ import {
 
 function PostCard(props) {
   const { postId } = useParams();
-  // var commentsArr = useSelector((state) => state.post.comments);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { username: currentUser } = useSelector((state) => state.auth.user);
@@ -23,8 +22,6 @@ function PostCard(props) {
   const [enableComments, setEnableComments] = useState(false);
   const [comment, setComment] = useState("");
   var commentArr = useSelector((state) => state.post.comments);
-
-  // const posts = useSelector((state) => state.post.posts);
 
   const {
     _id,
@@ -62,7 +59,7 @@ function PostCard(props) {
   useEffect(() => {
     dispatch(getComments(postId));
   }, []);
-  console.log("commentArr", commentArr);
+
   return (
     <>
       <div className="post">
@@ -133,31 +130,3 @@ function PostCard(props) {
 }
 
 export { PostCard };
-
-{
-  /* {enableComments && (
-        <footer>
-          <div className="relative w-full px-1">
-            <textarea
-              placeholder="Drop a comment.."
-              className="mt-2 w-full resize-none bg-gray-100 px-2 py-2 text-sm focus:outline-none"
-              value={formData.comment}
-              onChange={(e) =>
-                setFormData({ ...formData, comment: e.target.value })
-              }
-            />
-            <button
-              className="absolute right-4 bottom-1/2 translate-y-1/2 rounded-md border-none bg-blue-500 px-3 py-1 text-sm text-gray-100"
-              onClick={() => handleCommentPost(formData)}
-            >
-              Post
-            </button>
-          </div>
-          {commentArr.map((comment) => (
-            <Comment comment={comment} postId={_id} key={comment} />
-          ))}
-        </footer>
-      )}
-    </>
-  ); */
-}

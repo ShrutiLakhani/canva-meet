@@ -11,6 +11,7 @@ import {
   removeFromBookmarks,
   addComment,
   getComments,
+  deleteComment,
 } from "./postThunk";
 
 const initialState = {
@@ -84,6 +85,13 @@ const postSlice = createSlice({
         state.comments = action.payload.comments;
       })
       .addCase(getComments.rejected, (state, action) => {
+        console.log("error");
+      })
+      .addCase(deleteComment.fulfilled, (state, action) => {
+        state.comments = action.payload.comments;
+        console.log("error");
+      })
+      .addCase(deleteComment.rejected, (state, action) => {
         console.log("error");
       });
   },
