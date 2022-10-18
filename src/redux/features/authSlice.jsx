@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
+import { follow, unfollow } from "./user/userThunk";
 
 const initialState = {
   user: JSON.parse(localStorage.getItem("canva.user")) || "",
@@ -71,6 +72,18 @@ const authSlice = createSlice({
           "canvalink.user",
           JSON.stringify(action.payload.createdUser)
         );
+      })
+      .addCase(follow.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+      })
+      .addCase(follow.rejected, (state, action) => {
+        console.log("error");
+      })
+      .addCase(unfollow.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+      })
+      .addCase(unfollow.rejected, (state, action) => {
+        console.log("error");
       });
   },
 });

@@ -32,12 +32,6 @@ function Sidebar({ active }) {
           </Link>
         </div>
         <div className="sidebar-links">
-          <span class="material-symbols-outlined">archive</span>
-          <Link to="/watchlater" className="sidebar-links-name">
-            Archive
-          </Link>
-        </div>
-        <div className="sidebar-links">
           <span class="material-symbols-outlined">account_circle</span>
           <Link to="/liked" className="sidebar-links-name">
             Profile

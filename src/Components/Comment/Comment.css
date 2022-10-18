@@ -1,0 +1,59 @@
+.feed {
+  margin: 0 30px;
+}
+.feed-inputcontainer {
+  background-color: white;
+  padding: 10px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  margin-left: 36px;
+  margin-right: 80px;
+}
+.comment-input {
+  border-radius: 30px;
+  padding: 10px;
+  color: lightgrey;
+  padding-left: 15px;
+}
+
+.feed-input > input {
+  display: flex;
+  width: 100%;
+  border: none;
+  flex: 1;
+  margin-left: 10px;
+  outline-width: 0;
+  font-weight: 600;
+}
+.feed-input > button {
+  padding: 10px 14px;
+  border-radius: 15px;
+}
+.form-feed {
+  color: black;
+}
+.user-info {
+  display: flex;
+}
+.container {
+  border: 1px solid black;
+  width: 81%;
+  margin-left: 4.5rem;
+  border-radius: 10px;
+  margin-top: 0;
+}
+.comment-heading {
+  color: var(--component-black-color);
+}
+.comment-text {
+  color: var(--component-black-color);
+  font-weight: 300;
+}
+.user-info .post-delete-icon {
+  margin-left: auto;
+  color: black;
+}
+.user-info .post-edit-icon {
+  color: black;
+  margin-left: 29rem;
+}

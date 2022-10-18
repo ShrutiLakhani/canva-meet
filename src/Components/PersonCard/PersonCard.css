@@ -1,0 +1,20 @@
+.person-container {
+  background-color: var(--primary-color);
+  margin-right: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  display: flex;
+  /* gap: 0.5rem; */
+  margin-left: 1rem;
+  justify-content: space-between;
+  width: 16rem;
+  align-items: center;
+}
+.followup-button {
+  padding: 8px 20px;
+  border-radius: 1rem;
+  margin-top: 2px;
+}
+.person-container > P {
+  white-space: nowrap;
+}

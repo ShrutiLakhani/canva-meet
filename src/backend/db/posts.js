@@ -16,14 +16,14 @@ export const posts = [
       likeCount: 2,
       likedBy: [
         {
-          firstName: "Coco",
-          lastName: "Chanel",
+          firstname: "Coco",
+          lastname: "Chanel",
           username: "@cocochanel",
           profileImage: `https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Anna_Wintour_2019_crop.jpg/640px-Anna_Wintour_2019_crop.jpg`,
         },
         {
-          firstName: `Georgio`,
-          lastName: `Armani`,
+          firstname: `Georgio`,
+          lastname: `Armani`,
           username: `@garmani`,
           profileImage: `https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Anna_Wintour_2019_crop.jpg/640px-Anna_Wintour_2019_crop.jpg`,
         },
@@ -68,27 +68,27 @@ export const posts = [
       likeCount: 3,
       likedBy: [
         {
-          firstName: `Manish`,
-          lastName: `Malhotra`,
+          firstname: `Manish`,
+          lastname: `Malhotra`,
           username: `mmalhotra`,
           profileImage: `https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Anna_Wintour_2019_crop.jpg/640px-Anna_Wintour_2019_crop.jpg`,
         },
         {
-          firstName: `Anna`,
-          lastName: `Wintour`,
+          firstname: `Anna`,
+          lastname: `Wintour`,
           username: `annawintour`,
           profileImage: `https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Anna_Wintour_2019_crop.jpg/640px-Anna_Wintour_2019_crop.jpg`,
         },
         {
-          firstName: `Karl`,
-          lastName: `Lagerfeld`,
+          firstname: `Karl`,
+          lastname: `Lagerfeld`,
           username: `lagerfled`,
           profileImage: `https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Anna_Wintour_2019_crop.jpg/640px-Anna_Wintour_2019_crop.jpg`,
         },
       ],
       dislikedBy: [],
     },
-    username: "Coco Chanel",
+    username: "Karl Lagerfeld",
     profileImage: `https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Anna_Wintour_2019_crop.jpg/640px-Anna_Wintour_2019_crop.jpg`,
     createdAt: new Date("September 19 2022 12:06:56"),
     updatedAt: formatDate(),
@@ -126,14 +126,14 @@ export const posts = [
       likeCount: 2,
       likedBy: [
         {
-          firstName: `Vikram`,
-          lastName: `Phandis`,
+          firstname: `Vikram`,
+          lastname: `Phandis`,
           username: `vphandis`,
           profileImage: `https://res.cloudinary.com/dwqdlzlek/image/upload/v1654091110/bhavish_aggarwal_pc948b.jpg`,
         },
         {
-          firstName: `Sonam`,
-          lastName: `Kapoor`,
+          firstname: `Sonam`,
+          lastname: `Kapoor`,
           username: `sonamkapoor`,
           profileImage: `https://res.cloudinary.com/dwqdlzlek/image/upload/v1654092599/anupam_mittal_owirks.jpg`,
         },
@@ -177,14 +177,14 @@ export const posts = [
       likeCount: 2,
       likedBy: [
         {
-          firstName: `Michael`,
-          lastName: ` Kors`,
+          firstname: `Michael`,
+          lastname: ` Kors`,
           username: `mKors`,
           profileImage: `https://res.cloudinary.com/dwqdlzlek/image/upload/v1654091110/bhavish_aggarwal_pc948b.jpg`,
         },
         {
-          firstName: `Ralph`,
-          lastName: `Lauren`,
+          firstname: `Ralph`,
+          lastname: `Lauren`,
           username: `RLauren`,
           profileImage: `https://res.cloudinary.com/dwqdlzlek/image/upload/v1654092599/anupam_mittal_owirks.jpg`,
         },
@@ -234,5 +234,87 @@ export const posts = [
     createdAt: new Date("February 10 2022 11:06:56"),
     updatedAt: formatDate(),
     comments: [],
+  },
+  {
+    _id: uuid(),
+    content: "Elegant, eclectic and experimental",
+    postImage:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Anna_Wintour_2019_crop.jpg/640px-Anna_Wintour_2019_crop.jpg",
+    likes: {
+      likeCount: 2,
+      likedBy: [
+        {
+          firstname: "Coco",
+          lastname: "Chanel",
+          username: "@cocochanel",
+          profileImage: `https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Anna_Wintour_2019_crop.jpg/640px-Anna_Wintour_2019_crop.jpg`,
+        },
+        {
+          firstname: `Georgio`,
+          lastname: `Armani`,
+          username: `@garmani`,
+          profileImage: `https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Anna_Wintour_2019_crop.jpg/640px-Anna_Wintour_2019_crop.jpg`,
+        },
+      ],
+      dislikedBy: [],
+    },
+    username: "Sonam Kapoor",
+    profileImage: ``,
+    createdAt: new Date("February 10 2022 11:06:56"),
+    updatedAt: formatDate(),
+    comments: [
+      {
+        _id: uuid(),
+        username: "Christian Dior",
+        profileImage: `https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Anna_Wintour_2019_crop.jpg/640px-Anna_Wintour_2019_crop.jpg`,
+        text: "You said it!",
+        createdAt: new Date("September 12 2022 12:18:35"),
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
+  },
+  {
+    _id: uuid(),
+    content: "Elegant, eclectic and experimental",
+    postImage:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Anna_Wintour_2019_crop.jpg/640px-Anna_Wintour_2019_crop.jpg",
+    likes: {
+      likeCount: 2,
+      likedBy: [
+        {
+          firstname: "Coco",
+          lastname: "Chanel",
+          username: "@cocochanel",
+          profileImage: `https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Anna_Wintour_2019_crop.jpg/640px-Anna_Wintour_2019_crop.jpg`,
+        },
+        {
+          firstname: `Georgio`,
+          lastname: `Armani`,
+          username: `@garmani`,
+          profileImage: `https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Anna_Wintour_2019_crop.jpg/640px-Anna_Wintour_2019_crop.jpg`,
+        },
+      ],
+      dislikedBy: [],
+    },
+    username: "Curves & Style",
+    profileImage: ``,
+    createdAt: new Date("February 10 2022 11:06:56"),
+    updatedAt: formatDate(),
+    comments: [
+      {
+        _id: uuid(),
+        username: "Christian Dior",
+        profileImage: `https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Anna_Wintour_2019_crop.jpg/640px-Anna_Wintour_2019_crop.jpg`,
+        text: "Yo man Yo!",
+        createdAt: new Date("September 12 2022 12:18:35"),
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
   },
 ];

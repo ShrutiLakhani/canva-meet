@@ -8,6 +8,7 @@ import {
   Sidebar,
 } from "../../Components/components";
 import { useEffect } from "react";
+import { getAllUsers } from "../../redux/features/user/userThunk";
 
 function Explore() {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ function Explore() {
   const reversePosts = [...posts].reverse();
   useEffect(() => {
     dispatch(getPosts());
+    dispatch(getAllUsers());
   }, []);
   return (
     <>

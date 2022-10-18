@@ -28,7 +28,6 @@ export const createPost = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
-      console.log(error.response.data);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }
@@ -104,6 +103,93 @@ export const addToBookmarks = createAsyncThunk(
           headers: { authorization: getState().auth.token },
         }
       );
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+export const removeFromBookmarks = createAsyncThunk(
+  "post/removeFromBookmarks",
+  async (postId, { rejectWithValue, getState }) => {
+    try {
+      const response = await axios.post(
+        `/api/users/remove-bookmark/${postId}`,
+        {},
+        {
+          headers: { authorization: getState().auth.token },
+        }
+      );
+
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+export const addComment = createAsyncThunk(
+  "post/addComment",
+  async (data, { rejectWithValue, getState }) => {
+    const commentData = data.comment;
+    try {
+      const response = await axios.post(
+        `/api/comments/add/${data.postId}`,
+        { commentData },
+        {
+          headers: { authorization: getState().auth.token },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const getComments = createAsyncThunk(
+  "post/getComments",
+  async (postId, { rejectWithValue, getState }) => {
+    try {
+      const response = await axios.get(`/api/comments/${postId}`);
+
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const editComment = createAsyncThunk(
+  "api/editComment",
+  async (data, { rejectWithValue, getState }) => {
+    const commentData = data.commentData;
+    try {
+      const response = await axios.post(
+        `/api/comments/edit/${data.postId}/${data.commentId}`,
+        { commentData },
+        {
+          headers: { authorization: getState().auth.token },
+        }
+      );
+
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+export const deleteComment = createAsyncThunk(
+  "api/deleteComment",
+  async (data, { rejectWithValue, getState }) => {
+    try {
+      const response = await axios.post(
+        `/api/comments/delete/${data.postId}/${data.commentId}`,
+        {},
+        {
+          headers: { authorization: getState().auth.token },
+        }
+      );
+
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
